@@ -1,0 +1,35 @@
+name: "Publish terraform provider"
+description: "Publish terraform provider to private terraform registry"
+author: "Accelerate At Iver"
+inputs:
+  tf_org_name:
+    description: "Registered terraform organization name"
+    required: true
+  tf_provider_name:
+    description: "Name of the terraform provider"
+    required: true
+  tf_provider_version:
+    description: "Version to publish"
+    required: true
+  tf_pub_key_id:
+    description: "Public key ID"
+    required: true
+  tf_pub_key:
+    description: "Public key oneliner"
+    required: true
+  tf_api_token:
+    description: "Terraform API Token"
+    required: true
+  assets_path:
+    description: "Path to built artifacts in terraform provider repository"
+    required: true
+  assets_prefix:
+    description: "Prefix for artifacts (provider platforms and sha) files"
+    required: true
+  force_create:
+    description: "Re-publish artifacts if given provider version already exists in the registry"
+    default: "false"
+
+runs:
+  using: node16
+  main: entrypoint.js
